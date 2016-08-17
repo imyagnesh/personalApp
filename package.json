@@ -1,7 +1,7 @@
 {
   "name": "personalapp",
   "version": "0.0.1",
-  "description": "My personal web application",
+  "description": "My personal react application",
   "repository": {
     "type": "git",
     "url": "git://github.com/yagneshmodh/personalApp.git"
