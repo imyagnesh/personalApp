@@ -23,6 +23,9 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import useScroll from 'react-router-scroll';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import muiTheme from 'getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import configureStore from './store';
 
 // Import Language Provider
@@ -32,6 +35,8 @@ import LanguageProvider from 'containers/LanguageProvider';
 // the index.html file and this observer)
 import styles from 'containers/App/styles.css';
 const openSansObserver = new FontFaceObserver('Open Sans', {});
+
+injectTapEventPlugin();
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
 openSansObserver.load().then(() => {
@@ -79,15 +84,17 @@ const render = (translatedMessages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={translatedMessages}>
-        <Router
-          history={history}
-          routes={rootRoute}
-          render={
-            // Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())
-          }
-        />
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <Router
+            history={history}
+            routes={rootRoute}
+            render={
+              // Scroll to top when going to a new page, imitating default browser
+              // behaviour
+              applyRouterMiddleware(useScroll())
+            }
+          />
+        </MuiThemeProvider>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')

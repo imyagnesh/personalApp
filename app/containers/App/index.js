@@ -8,10 +8,12 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+// import Drawer from 'material-ui/Drawer';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
+import Header from 'components/Header';
 import Img from 'components/Img';
 import Footer from 'components/Footer';
 import Banner from './banner-metal.jpg';
@@ -29,6 +31,8 @@ function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
+      {/* TODO: Add Header Here... */}
+      <Header />
       <A className={styles.logoWrapper} href="https://twitter.com/mxstbr">
         <Img className={styles.logo} src={Banner} alt="react-boilerplate - Logo" />
       </A>
